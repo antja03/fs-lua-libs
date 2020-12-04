@@ -1,8 +1,10 @@
-local CEntity = require("sdk1710.entity.CEntity")
+local CEntityPlayer = require("sdk1710.entity.player.CEntityPlayer")
 
+---@class CWorld
 local CWorld = {}
 CWorld.__index = CWorld
 
+---@return CWorld
 function CWorld:new(obj)
     local inst = {}
     setmetatable(inst, self)
@@ -10,6 +12,7 @@ function CWorld:new(obj)
     return inst
 end
 
+---@return table<number, CEntityPlayer>
 function CWorld:getPlayers()
     local players = {}
 
@@ -22,9 +25,14 @@ function CWorld:getPlayers()
         params:push_int(i)
 
         local player = playerEntityList:call_object("get", "(I)Ljava/lang/Object;", params)
-        if not player == nil then
-            table.insert(players, CEntity:new(player))
+        if player == nil then
+            goto continue
         end
+
+        cout("player")
+        table.insert(players, CEntityPlayer:new(player))
+
+        ::continue::
     end
 
     return players
