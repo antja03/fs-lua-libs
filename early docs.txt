@@ -1,0 +1,42 @@
+CWorld:getPlayers(): table
+Returns table of the playerlist from the world object.
+
+CEntityLivingBase:getEyeHeight(): number
+Returns eye height of entity.
+
+CEntityLivingBase:getHealth(): number
+Returns health of entity.
+
+CEntityLivingBase:isPlayer(): boolean
+Returns true or false depending on if entity is a player.
+
+CEntityLivingBase:isEntityAlive(): boolean
+Returns true or false depending on if entity is alive.
+
+CEntity:getPosition(): number, number, number
+Returns the x,y,z world position of entity.
+
+CEntity:getLastPosition(): number, number, number
+Returns the x,y,z world position of the entity from the previous tick.
+
+CEntity:getMotion(): number, number, number
+Returns the x,y,z motion / velocity of the entity after being pushed from an attack.
+
+CEntity:isDead(): boolean
+Returns true or false depending on if the entity is dead.
+
+CEntity:getAngles(): number, number
+Returns x,y of the entity's current view angles.
+
+CEntity:setAngles([yaw: number, pitch: number])
+Argument        Type                Description
+pitch           number (-90 - 90)   Pitch
+yaw             number (-180 - 180)   Yaw
+
+CEntityClientPlayerMP:getDistanceToEntity([entity: derivative_entity)
+Argument        Type                Description
+entity          derivative_entity   Any entity derived from entity.
+Returns the distance from local player to entity.
+
+CEntityClientPlayerMP:getOldPosition() number, number, number
+Returns the x,y,z world position of the local player from the previous tick.
