@@ -12,7 +12,6 @@ function CEntityClientPlayerMP:new(obj)
     return inst
 end
 
----@param entity CEntity
 ---@return number
 function CEntityClientPlayerMP:getDistanceToEntity(entity)
     local x, y, z = self:getPosition()

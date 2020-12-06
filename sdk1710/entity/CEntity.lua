@@ -22,16 +22,35 @@ function CEntity:getPosition()
            self.obj:get_double("u")
 end
 
-function CEntity:getAngles()
-    return self.obj:get_float("y"),
-           self.obj:get_float("z ")
+---@return table<string, number>
+function CEntity:getLastPosition()
+    return self.obj:get_double("S"),
+           self.obj:get_double("T"),
+           self.obj:get_double("U")
 end
 
+---@return table<string, number>
+function CEntity:getMotion()
+    return self.obj:get_double("v"),
+           self.obj:get_double("w"),
+           self.obj:get_double("x")
+end
+
+---@return boolean
+function CEntity:isDead()
+    return self.obj:get_int("K")
+end
+
+---@return table<string, number>
+function CEntity:getAngles()
+    return self.obj:get_float("y"),
+           self.obj:get_float("z")
+end
+
+---@return table<string, number>
 function CEntity:setAngles(yaw, pitch)
-    local params = jvm.c_params()
-    params:push_float(yaw)
-    params:push_float(pitch)
-    self.obj:call_void("c", "(FF)V", params)
+    self.obj:set_float("y", yaw)
+    self.obj:set_float("z", pitch)
 end
 
 return CEntity

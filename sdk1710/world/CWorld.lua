@@ -29,7 +29,6 @@ function CWorld:getPlayers()
             goto continue
         end
 
-        cout("player")
         table.insert(players, CEntityPlayer:new(player))
 
         ::continue::
